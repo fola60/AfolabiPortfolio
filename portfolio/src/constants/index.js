@@ -15,20 +15,23 @@ export const PROJECTS = [
         image: fyp1,
         description: "This project is a tool for football enthusiasts and analysts. It allows users to search for their desired player within europe's top 5 leagues and view percentile statistics and graphs on the player. You can also find new exciting players by searching for players by attributes such as chances created, defending, ball retention etc.",
         technologies: ["HTML", "CSS", "React", "Express.js","Postgresql"],
-        link: "https://findyourplayers.xyz"
+        link: "https://findyourplayers.xyz",
+        github_link: "https://github.com/fola60/findYourPlayer",
     },
     {
         title: "ScoreYourDay",
         image: syd1,
         description: "This project is a tool for students, or anyone to keep track of, not only their tasks but the progress they have made in each of their tasks. It provides users with a simple and friendly UI and easy to use components. You can also dynamically make tasks for each day of the week, month or year. As well as providing analytics on what days, weeks and months the user performs well on and doesnt perform well. The implementation of a test score rating motivates users to maintain a high score each day by completing each of their tasks with a 100% score.",
         technologies: ["HTML", "CSS", "React", "Springboot","Postgresql"],
-        link: "https://scoreyourday.xyz"
+        link: "https://scoreyourday.xyz",
+        github_link: "https://github.com/fola60/ScoreYourDay",
     },
     {
         title: "Predict Prem Games",
         image: ppg2,
         description: "This project is a tool for football analysts and enthusiats to gather data on football teams and football match results, and to see predictions made based on data points. This can be used to see what statistics affect match outcomes the most.",
         technologies: ["Python", "SciKitLearn","BeautifulSoup"],
+        github_link: "https://github.com/fola60/PredictPremGames",
     }
 
 
