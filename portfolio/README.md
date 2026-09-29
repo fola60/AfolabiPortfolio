@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+# Afolabi Adekanle — Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React portfolio with a fixed light theme, cool off-white surfaces, green panels and a navy-blue CRT-style navigation component. The workstation is original HTML/CSS, with functioning section links. No television stills are included.
 
-## Available Scripts
+## Development
 
-In the project directory, you can run:
+```sh
+npm ci
+npm start
+```
 
-### `npm start`
+The preview runs at http://localhost:3000. `npm run build` generates the static site in `build/`. Run tests with `CI=true npm test -- --watchAll=false --runInBand`.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Content
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The project descriptions and experience bullets reproduce `repos/cv-versions/01-general-software-engineering.md`. The downloadable CV is `public/afolabi-adekanle-cv.pdf`.
 
-### `npm test`
+- Project data and contact links: `src/constants/index.js`
+- Introduction: `src/components/Hero.jsx`
+- Experience, education and skills: `src/components/About.jsx`
+- Original workstation: `src/components/Workstation.jsx`
+- Layout and responsive styles: `src/index.css`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The text structure was checked against [MIT's resume samples](https://cdn.uconnectlabs.com/wp-content/uploads/sites/123/2021/08/sampe-resumes-capd.pdf) and [resume guidance](https://capd.mit.edu/resources/resumes/). The user's CV remains the source for every accomplishment and qualification.
 
-### `npm run build`
+## Design and accessibility
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The user-supplied workstation reference informed the muted green, navy, cyan and cool off-white palette. The visual treatment uses cabinet borders, inset screen details and monospace labels. Navigation, project links, PDF downloads and email contact use native HTML links. The copy control announces success or a manual-copy fallback. Page transitions respect `prefers-reduced-motion`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+DM Sans and IBM Plex Mono are self-hosted. Font licenses and provenance are in `public/fonts/`.

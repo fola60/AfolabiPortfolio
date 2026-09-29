@@ -1,30 +1,88 @@
+import { useEffect } from "react";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Hero from "./components/Hero";
+import Intro from "./components/Intro";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
-import Technologies from "./components/Technologies";
+import { reducedMotion } from "./motion";
 
+export default function App() {
+  useEffect(() => {
+    document.documentElement.removeAttribute("data-theme");
+    if (!("IntersectionObserver" in window) || reducedMotion()) return;
+    const timers = new Set();
+    const later = (fn, ms) => {
+      const timer = window.setTimeout(() => {
+        timers.delete(timer);
+        fn();
+      }, ms);
+      timers.add(timer);
+    };
 
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const element = entry.target;
+          if (element.classList.contains("reveal-pending")) {
+            element.classList.add("is-revealing");
+            element.classList.remove("reveal-pending");
+            later(() => element.classList.remove("is-revealing"), 1200);
+          }
+          observer.unobserve(element);
+        });
+      },
+      { threshold: 0.08 },
+    );
+    document.querySelectorAll(".reveal").forEach((element) => {
+      if (element.getBoundingClientRect().top > window.innerHeight) {
+        element.classList.add("reveal-pending");
+      }
+      observer.observe(element);
+    });
 
-function App() {
+    // Sweep a scan line down a section once an in-page link finishes scrolling to it.
+    const onClick = (event) => {
+      const link = event.target.closest('a[href^="#"]');
+      const section =
+        link && document.getElementById(link.getAttribute("href").slice(1));
+      if (!section || !section.matches("main > section")) return;
+      let done = false;
+      const arrive = () => {
+        if (done) return;
+        done = true;
+        window.removeEventListener("scrollend", arrive);
+        section.classList.remove("arrive");
+        void section.offsetWidth;
+        section.classList.add("arrive");
+        later(() => section.classList.remove("arrive"), 900);
+      };
+      window.addEventListener("scrollend", arrive);
+      later(arrive, 900);
+    };
+    document.addEventListener("click", onClick);
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("click", onClick);
+      timers.forEach((timer) => window.clearTimeout(timer));
+    };
+  }, []);
+
   return (
-    <div className="overflow-x-hidden text-neutral-300 antialiased slec selection:bg-cyan-300 selection:text-cyan-900">
-        <div className="fixed top-0 -z-10 h-full w-full">
-          <div className="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
-          </div>
-        </div>
-        <div className="container mx-auto px-8">
-            <Navbar />
-            <Hero />
-            <About />
-            <Technologies />
-            <Projects />
-            <Contact />
-        </div>
-        
+    <div id="top" className="portfolio">
+      <Intro />
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
+      <Navbar />
+      <main id="main">
+        <Hero />
+        <Projects />
+        <About />
+        <Contact />
+      </main>
     </div>
   );
 }
-
-export default App;
